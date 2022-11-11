@@ -1,0 +1,9 @@
+.link {
+  text-decoration: none;
+  color: white;
+
+  &Active {
+    background-color: var(--active-color);
+    border-radius: 50%;
+  }
+}

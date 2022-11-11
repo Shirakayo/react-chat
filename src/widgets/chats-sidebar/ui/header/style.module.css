@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 15px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.accountInfoTitle {
+  font-weight: 700;
+}
+.accountInfoDescription {
+  font-weight: 500;
+  color: var(--primary-light-color);
+}
+
+/*# sourceMappingURL=style.module.css.map */

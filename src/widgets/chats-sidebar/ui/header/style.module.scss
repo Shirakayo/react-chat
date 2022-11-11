@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 15px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  &Info {
+
+    &Title {
+      font-weight: 700;
+    }
+
+    &Description {
+      font-weight: 500;
+      color: var(--primary-light-color);
+    }
+  }
+}

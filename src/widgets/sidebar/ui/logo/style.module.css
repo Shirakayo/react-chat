@@ -1,0 +1,12 @@
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+/*# sourceMappingURL=style.module.css.map */

@@ -1,0 +1,10 @@
+.link {
+  text-decoration: none;
+  color: white;
+}
+.linkActive {
+  background-color: var(--active-color);
+  border-radius: 50%;
+}
+
+/*# sourceMappingURL=style.module.css.map */

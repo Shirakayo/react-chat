@@ -1,0 +1,70 @@
+import React, { lazy, LazyExoticComponent, Suspense } from 'react'
+import { useSelector } from 'react-redux'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { authSelector } from '@/store/authSlice'
+import {
+  CONTACT_ROUTE,
+  HOME_ROUTE,
+  LOGIN_ROUTE,
+  MARKS_ROUTE,
+  MEETS_ROUTE,
+  MESSAGES_ROUTE,
+  REGISTRATION_ROUTE,
+  VOICES_ROUTE,
+} from '@/utils/paths'
+
+const AuthPage = lazy(() => import('./Authorization'))
+const RegistrationPage = lazy(() => import('./Registration'))
+const HomePage = lazy(() => import('./Home'))
+const Messages = lazy(() => import('./Messages'))
+const Voices = lazy(() => import('./Voices'))
+const Contact = lazy(() => import('./Contacts'))
+const Marks = lazy(() => import('./Marks'))
+
+const publicRoutes: {
+  path: string
+  element: LazyExoticComponent<() => JSX.Element>
+}[] = [
+  { path: LOGIN_ROUTE, element: AuthPage },
+  { path: REGISTRATION_ROUTE, element: RegistrationPage },
+  { path: HOME_ROUTE, element: HomePage },
+]
+
+const privateRoutes = [
+  { path: MESSAGES_ROUTE, element: Messages },
+  { path: VOICES_ROUTE, element: Voices },
+  { path: CONTACT_ROUTE, element: Contact },
+  { path: MARKS_ROUTE, element: Marks },
+]
+
+export const Routing = () => {
+  const { isAuthenticated } = useSelector(authSelector)
+  return (
+    <Routes>
+      {isAuthenticated &&
+        privateRoutes.map((route) => (
+          <Route
+            key={route.path}
+            path={route.path}
+            element={
+              <Suspense fallback={<div>Загрузка..</div>}>
+                <route.element />
+              </Suspense>
+            }
+          />
+        ))}
+      {publicRoutes.map((route) => (
+        <Route
+          key={route.path}
+          path={route.path}
+          element={
+            <Suspense fallback={<div>Загрузка..</div>}>
+              <route.element />
+            </Suspense>
+          }
+        />
+      ))}
+      <Route path="/*" element={<Navigate to="/" replace />} />
+    </Routes>
+  )
+}

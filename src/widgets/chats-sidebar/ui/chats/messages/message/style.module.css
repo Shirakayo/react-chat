@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  height: 75px;
+  max-width: 375px;
+  cursor: pointer;
+}
+.wrapper:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.message {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  padding: 0 15px;
+}
+.messageTime {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.messageTime small {
+  font-size: 10px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
+.infoLogin {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.infoMessage {
+  font-size: 12px;
+  max-width: 230px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*# sourceMappingURL=style.module.css.map */

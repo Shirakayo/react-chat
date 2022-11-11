@@ -1,0 +1,21 @@
+.wrapper {
+  overflow-y: scroll;
+  max-height: 530px;
+  padding-bottom: 30px;
+  scroll-behavior: smooth;
+  scrollbar-color: white transparent;
+  scrollbar-width: thin;
+}
+.wrapper::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 5px;
+}
+.wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+}
+
+/*# sourceMappingURL=style.module.css.map */

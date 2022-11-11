@@ -1,0 +1,6 @@
+.wrapper {
+  width: var(--chats-sidebar-width);
+  min-height: 100vh;
+  background-color: var(--chats-sidebar-dark-color);
+  border-right: 2px solid var(--border-color);
+}

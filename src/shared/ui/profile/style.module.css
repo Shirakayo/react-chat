@@ -1,0 +1,19 @@
+.profile {
+  position: relative;
+}
+.profileImage {
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.onlineCircle {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 10px;
+  height: 10px;
+  background-color: lightcoral;
+  border-radius: 50%;
+}
+
+/*# sourceMappingURL=style.module.css.map */

@@ -1,0 +1,24 @@
+.navigationList {
+  list-style-type: none;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &Item {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &Link {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
