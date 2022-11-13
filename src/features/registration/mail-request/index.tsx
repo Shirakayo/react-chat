@@ -1,15 +1,16 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { useSelector } from 'react-redux'
 import * as yup from 'yup'
 import { Button } from '@/shared/ui/button'
+import { useAppDispatch } from '@/store'
+import { authSelector, setEmail } from '@/store/authSlice'
 import style from './style.module.scss'
 
 interface Props {
   formStep: number
   nextStep: () => void
-  emailValue: string
-  setEmailValue: (value: string) => void
 }
 
 interface FormValues {
@@ -26,26 +27,24 @@ const schema = yup.object().shape({
     .required("Don't you have any mail?"),
 })
 
-export const MailRequest = ({
-  formStep,
-  nextStep,
-  emailValue,
-  setEmailValue,
-}: Props) => {
+export const MailRequest = ({ formStep, nextStep }: Props) => {
+  const dispatch = useAppDispatch()
+  const { authData } = useSelector(authSelector)
   const {
     handleSubmit,
     register,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormValues>({
     defaultValues: {
-      email: emailValue,
+      email: authData.email,
     },
-    mode: 'onBlur',
+    mode: 'onChange',
     resolver: yupResolver(schema),
   })
 
   const onSubmit = (data: FormValues) => {
-    setEmailValue(data.email)
+    dispatch(setEmail(data.email))
+    nextStep()
   }
   return (
     <>
@@ -67,11 +66,7 @@ export const MailRequest = ({
           type="email"
         />
         <small className={style.errorMessage}>{errors.email?.message}</small>
-        <Button
-          disabled={(errors.email?.message)!.length > 0}
-          onClick={nextStep}
-          className={style.button}
-        >
+        <Button disabled={!isValid} className={style.button}>
           Next step
         </Button>
       </form>

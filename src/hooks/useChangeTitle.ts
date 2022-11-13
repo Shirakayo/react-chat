@@ -4,9 +4,9 @@ const useChangeTitle = (title?: string) => {
   const [documentTitle, setDocumentTitle] = useState(title)
   useEffect(() => {
     if (!title) {
-      document.title = `OniChat from Shirakayo👺`
+      document.title = `OniChat from Shirakayo 🎅`
     } else {
-      document.title = `${documentTitle} - OniChat from Shirakayo👺`
+      document.title = `${documentTitle} - OniChat from Shirakayo 🎅`
     }
   }, [documentTitle, title])
 

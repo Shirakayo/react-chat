@@ -10,21 +10,13 @@ interface Props {
   formStep: number
   nextStep: () => void
   prevStep: () => void
-  codeValue: string
-  setCodeValue: (value: string) => void
 }
 
 const schema = yup.object({
   code: yup.string().matches(/^\d+$/),
 })
 
-export const ConfirmCode = ({
-  formStep,
-  nextStep,
-  prevStep,
-  codeValue,
-  setCodeValue,
-}: Props) => {
+export const ConfirmCode = ({ formStep, nextStep, prevStep }: Props) => {
   const {
     handleSubmit,
     register,
@@ -54,7 +46,7 @@ export const ConfirmCode = ({
           Enter your confirmation code
         </p>
       </div>
-      <input value={codeValue} {...register('code')} type="text" />
+      <input {...register('code')} type="text" />
     </form>
   )
 }

@@ -4,8 +4,6 @@ interface Props {
   formStep: number
   nextStep: () => void
   prevStep: () => void
-  setPersonalInformation: (value: object) => void
-  personInformation: object
 }
 
 export const PersonInformation = ({ formStep, nextStep, prevStep }: Props) => {
