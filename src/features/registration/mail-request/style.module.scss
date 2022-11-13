@@ -1,0 +1,47 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputField {
+  outline: none;
+  border: 1px solid white;
+  width: 100%;
+  background-color: transparent;
+  height: 40px;
+  padding: 0 10px;
+  margin-bottom: 5px;
+}
+
+.button {
+  background-color: transparent;
+  width: 100%;
+  border: 1px solid white;
+  height: 40px;
+  cursor: pointer;
+}
+
+.errorMessage {
+  margin-bottom: 30px;
+  color: darkred;
+  text-align: left;
+  width: 100%;
+}
+
+.stepInformation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+
+  &Title {
+    font-weight: 300;
+    font-size: 13px;
+  }
+}
+
+.stepInformationButton {
+  cursor: pointer;
+}

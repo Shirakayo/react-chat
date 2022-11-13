@@ -1,0 +1,19 @@
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #151719;
+}
+
+.formWrapper {
+  width: 400px;
+  height: 600px;
+}
+
+.header {
+  padding-top: 5px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}

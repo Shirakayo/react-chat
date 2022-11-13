@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from './header'
+import { Header } from './header'
 import { Peoples } from './peoples'
 import style from './style.module.scss'
 

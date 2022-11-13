@@ -1,1 +1,1 @@
-export * as ChatBar from './ui';
+export * as ChatBar from './ui'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHorizontalScroll } from '@/hooks/HorizontalScroll'
+import { useHorizontalScroll } from '@/hooks/useHorizontalScroll'
 import { Profile } from '@/shared/ui/profile'
 import { onlineUsers } from '@/utils/mock/statusUsers'
 import style from './style.module.scss'

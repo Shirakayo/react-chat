@@ -1,0 +1,17 @@
+.stepInformation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+
+  &Title {
+    font-weight: 300;
+    font-size: 13px;
+  }
+}
+
+.stepHandle {
+  display: flex;
+  align-items: center;
+}

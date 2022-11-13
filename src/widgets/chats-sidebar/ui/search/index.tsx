@@ -6,7 +6,7 @@ import { Input } from '@/shared/ui/input'
 import style from './style.module.scss'
 
 export const Search = () => {
-  const [, setSearchValue] = useState('')
+  const [, setSearchValue] = useState('') // searchValue - пока не нужен поиск
   const [viewSearchValue, setViewSearchValue] = useState('')
 
   const changeSearchValue = (event: ChangeEvent<HTMLInputElement>) => {

@@ -36,7 +36,7 @@ interface State {
 }
 
 const initialState: State = {
-  isAuthenticated: true,
+  isAuthenticated: false,
   user: [],
 }
 
