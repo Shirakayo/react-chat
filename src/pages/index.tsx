@@ -29,7 +29,6 @@ const publicRoutes: {
 }[] = [
   { path: LOGIN_ROUTE, element: AuthPage },
   { path: REGISTRATION_ROUTE, element: RegistrationPage },
-  { path: HOME_ROUTE, element: HomePage },
 ]
 
 const privateRoutes = [
@@ -38,6 +37,7 @@ const privateRoutes = [
   { path: CONTACT_ROUTE, element: Contact },
   { path: MARKS_ROUTE, element: Marks },
   { path: MEETS_ROUTE, element: Conferences },
+  { path: HOME_ROUTE, element: HomePage },
 ]
 
 export const Routing = () => {

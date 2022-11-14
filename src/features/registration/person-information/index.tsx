@@ -7,5 +7,7 @@ interface Props {
 }
 
 export const PersonInformation = ({ formStep, nextStep, prevStep }: Props) => {
-  return <div>PersonInformation</div>
+  return <div>
+    <button onClick={prevStep}>prev</button>
+  </div>
 }

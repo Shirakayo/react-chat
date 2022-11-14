@@ -7,6 +7,7 @@ import { Button } from '@/shared/ui/button'
 import { useAppDispatch } from '@/store'
 import { authSelector, setEmail } from '@/store/authSlice'
 import style from './style.module.scss'
+import clsx from 'clsx'
 
 interface Props {
   formStep: number
@@ -66,7 +67,13 @@ export const MailRequest = ({ formStep, nextStep }: Props) => {
           type="email"
         />
         <small className={style.errorMessage}>{errors.email?.message}</small>
-        <Button disabled={!isValid} className={style.button}>
+        <Button
+          disabled={!isValid}
+          className={clsx(
+            style.button,
+            isValid ? style.buttonValid : style.buttonInvalid
+          )}
+        >
           Next step
         </Button>
       </form>

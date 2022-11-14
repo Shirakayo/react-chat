@@ -1,9 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import clsx from 'clsx'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io'
+import { useSelector } from 'react-redux'
 import * as yup from 'yup'
 import { Button } from '@/shared/ui/button'
+import { useAppDispatch } from '@/store'
+import { authSelector, setCode } from '@/store/authSlice'
 import style from './style.module.scss'
 
 interface Props {
@@ -12,33 +16,47 @@ interface Props {
   prevStep: () => void
 }
 
+interface FormValues {
+  code: string
+}
+
 const schema = yup.object({
-  code: yup.string().matches(/^\d+$/),
+  code: yup
+    .string()
+    .matches(/^\d+$/, 'The confirmation code must consist of numbers!')
+    .required('Enter the confirmation code')
+    .min(6, 'Impermissible confirmation code length')
+    .max(32, 'Confirmation code length exceeded'),
 })
 
 export const ConfirmCode = ({ formStep, nextStep, prevStep }: Props) => {
+  const { authData } = useSelector(authSelector)
+  const dispatch = useAppDispatch()
   const {
     handleSubmit,
     register,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
-    mode: 'onBlur',
+    defaultValues: {
+      code: authData.code,
+    },
     resolver: yupResolver(schema),
   })
 
-  const onSubmit = (data: object) => {
-    console.log(data)
+  const onSubmit = (data: FormValues) => {
+    dispatch(setCode(data.code))
+    nextStep()
   }
-
+  console.log(errors)
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className={style.formWrapper}>
       <div className={style.stepInformation}>
         <div className={style.stepHandle}>
-          <Button onClick={prevStep}>
+          <Button className={style.stepButton} onClick={prevStep}>
             <IoIosArrowRoundBack fill="white" size={20} />
           </Button>
           <span>{formStep} of 3</span>
-          <Button onClick={nextStep}>
+          <Button className={style.stepButton} onClick={nextStep}>
             <IoIosArrowRoundForward fill="white" size={20} />
           </Button>
         </div>
@@ -46,7 +64,17 @@ export const ConfirmCode = ({ formStep, nextStep, prevStep }: Props) => {
           Enter your confirmation code
         </p>
       </div>
-      <input {...register('code')} type="text" />
+      <input {...register('code')} type="text" className={style.input} />
+      <small>{errors.code?.message}</small>
+      <Button
+        disabled={!isValid}
+        className={clsx(
+          style.button,
+          isValid ? style.buttonValid : style.buttonInvalid
+        )}
+      >
+        Next step
+      </Button>
     </form>
   )
 }
