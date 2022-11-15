@@ -1,6 +1,7 @@
 import React, { lazy, LazyExoticComponent, Suspense } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { Loader } from '@/shared/ui/loader'
 import { authSelector } from '@/store/authSlice'
 import {
   CONTACT_ROUTE,
@@ -20,6 +21,7 @@ const Messages = lazy(() => import('./Messages'))
 const Voices = lazy(() => import('./Voices'))
 const Contact = lazy(() => import('./Contacts'))
 const Marks = lazy(() => import('./Marks'))
+const Conferences = lazy(() => import('./Conferences'))
 
 const publicRoutes: {
   path: string
@@ -35,6 +37,8 @@ const privateRoutes = [
   { path: VOICES_ROUTE, element: Voices },
   { path: CONTACT_ROUTE, element: Contact },
   { path: MARKS_ROUTE, element: Marks },
+  { path: MEETS_ROUTE, element: Conferences },
+  { path: HOME_ROUTE, element: HomePage },
 ]
 
 export const Routing = () => {
@@ -47,24 +51,26 @@ export const Routing = () => {
             key={route.path}
             path={route.path}
             element={
-              <Suspense fallback={<div>Загрузка..</div>}>
+              <Suspense fallback={<Loader />}>
                 <route.element />
               </Suspense>
             }
           />
         ))}
-      {publicRoutes.map((route) => (
-        <Route
-          key={route.path}
-          path={route.path}
-          element={
-            <Suspense fallback={<div>Загрузка..</div>}>
-              <route.element />
-            </Suspense>
-          }
-        />
-      ))}
-      <Route path="/*" element={<Navigate to="/" replace />} />
+      {!isAuthenticated &&
+        // eslint-disable-next-line sonarjs/no-identical-functions
+        publicRoutes.map((route) => (
+          <Route
+            key={route.path}
+            path={route.path}
+            element={
+              <Suspense fallback={<Loader />}>
+                <route.element />
+              </Suspense>
+            }
+          />
+        ))}
+      <Route path="/*" element={<Navigate to={HOME_ROUTE} replace />} />
     </Routes>
   )
 }

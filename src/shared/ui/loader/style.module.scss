@@ -1,0 +1,16 @@
+.loaderWrapper {
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  animation: loader infinite;
+}
+
+@keyframes loader {
+
+}

@@ -30,22 +30,45 @@ interface User {
   friends: Users[]
 }
 
+interface AuthData {
+  [key: string]: string
+}
+
 interface State {
   isAuthenticated: boolean
   user: User[]
+  authData: AuthData
 }
 
 const initialState: State = {
-  isAuthenticated: true,
+  isAuthenticated: false,
   user: [],
+  authData: {
+    email: '',
+    login: '',
+    firstname: '',
+    lastname: '',
+  },
 }
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    setEmail(state, { payload }) {
+      state.authData.email = payload
+    },
+    setCode(state, { payload }) {
+      state.authData.code = payload
+    },
+    setPersonInfo(state, { payload }) {
+      state.authData.login = payload.login
+      state.authData.password = payload.password
+      state.authData.confirmPassword = payload.confirmPassword
+    },
+  },
 })
 
 export const authSelector = (state: RootState) => state.authReducer
-
+export const { setEmail, setCode, setPersonInfo } = authSlice.actions
 export const authReducer = authSlice.reducer

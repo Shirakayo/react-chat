@@ -1,1 +1,1 @@
-export {Voices as default} from './Voices'
+export { Voices as default } from './Voices'

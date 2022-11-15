@@ -1,1 +1,1 @@
-export {BookMarks as default} from './Marks'
+export { BookMarks as default } from './Marks'

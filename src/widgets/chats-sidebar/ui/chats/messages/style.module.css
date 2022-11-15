@@ -1,6 +1,6 @@
 .wrapper {
-  overflow-y: scroll;
-  max-height: 530px;
+  overflow-y: auto;
+  height: calc(100vh - 395px);
   padding-bottom: 30px;
   scroll-behavior: smooth;
   scrollbar-color: white transparent;

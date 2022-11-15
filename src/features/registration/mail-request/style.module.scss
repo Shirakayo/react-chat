@@ -1,0 +1,63 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.inputField {
+  outline: none;
+  border: 1px solid rgba(255,255,255, .6);
+  width: 100%;
+  background-color: transparent;
+  height: 40px;
+  padding: 0 10px;
+  margin-bottom: 5px;
+
+  &::placeholder {
+    font-size: 13px;
+    color: white;
+  }
+}
+
+.button {
+  background-color: transparent;
+  width: 100%;
+  height: 40px;
+
+  &Valid {
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255, .6);
+    color: rgba(255,255,255, .6)
+  }
+
+  &Invalid {
+    cursor: not-allowed;
+    border: 1px solid rgba(255,255,255, .2);
+    color: rgba(255,255,255, .2)
+  }
+}
+
+.errorMessage {
+  margin-bottom: 30px;
+  color: red;
+  text-align: left;
+  width: 100%;
+}
+
+.stepInformation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+
+  &Title {
+    font-weight: 300;
+    font-size: 13px;
+  }
+}
+
+.stepInformationButton {
+  cursor: pointer;
+}

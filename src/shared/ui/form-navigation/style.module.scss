@@ -1,0 +1,25 @@
+.stepInformation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255,255,255, .4);
+
+  &Title {
+    font-weight: 300;
+    font-size: 13px;
+  }
+}
+
+.stepHandle {
+  display: flex;
+  align-items: center;
+}
+
+.stepButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,16 +1,16 @@
 :root {
   --sidebar-width: 115px;
-  --sidebar-dark-color: #18191A;
-  --sidebar-light-color: #FAFAFA;
-  --active-color: #FAF9F6;
-  --light-color: #FFFFFF;
-  --primary-light-color: rgba(255, 255, 255, .7);
-  --dark-color: #18191A;
-  --black-bg: #0A0E0F;
+  --sidebar-dark-color: #18191a;
+  --sidebar-light-color: #fafafa;
+  --active-color: #faf9f6;
+  --light-color: #ffffff;
+  --primary-light-color: rgba(255, 255, 255, 0.7);
+  --dark-color: #18191a;
+  --black-bg: #0a0e0f;
   --input-bg: #202426;
-  --border-color: rgba(255, 255, 255, .1);
+  --border-color: rgba(255, 255, 255, 0.1);
   --chats-sidebar-width: 375px;
-  --chats-sidebar-dark-color: #18191A;
+  --chats-sidebar-dark-color: #18191a;
 }
 
 /*# sourceMappingURL=variables.css.map */

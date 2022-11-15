@@ -1,4 +1,5 @@
 import React from 'react'
+import { useChangeTitle } from '@/hooks/useChangeTitle'
 import { MainLayout } from '@/layouts'
 import style from './style.module.scss'
 
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export const Messages = ({ dialog }: Props) => {
+  useChangeTitle('Messages')
   if (!dialog || dialog.length === 0) {
     return (
       <MainLayout>
