@@ -45,11 +45,9 @@ const initialState: State = {
   user: [],
   authData: {
     email: '',
-    code: '',
     login: '',
-    dateOfBirth: '',
-    password: '',
-    confirmPassword: '',
+    firstname: '',
+    lastname: '',
   },
 }
 
@@ -65,7 +63,6 @@ const authSlice = createSlice({
     },
     setPersonInfo(state, { payload }) {
       state.authData.login = payload.login
-      state.authData.dateOfBirth = payload.dateOfBirth
       state.authData.password = payload.password
       state.authData.confirmPassword = payload.confirmPassword
     },

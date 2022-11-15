@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { ConfirmCode } from '@/features/registration/confirm-code'
 import { Header } from '@/features/registration/header'
 import { MailRequest } from '@/features/registration/mail-request'
 import { PersonInformation } from '@/features/registration/person-information'
 import { useChangeTitle } from '@/hooks/useChangeTitle'
+import { Link } from '@/shared/ui/link'
+import { LOGIN_ROUTE } from '@/utils/paths'
 import style from './style.module.scss'
 
 export const Registration = () => {
@@ -15,31 +16,28 @@ export const Registration = () => {
     }
   }
   const forwardStep = () => {
-    if (formStep !== 3) {
+    if (formStep !== 2) {
       setFormStep((step) => step + 1)
     }
   }
   return (
     <div className={style.wrapper}>
       <div className={style.formWrapper}>
-        <Header className={style.header} />
-        {formStep === 1 && (
-          <MailRequest formStep={formStep} nextStep={forwardStep} />
-        )}
-        {formStep === 2 && (
-          <ConfirmCode
-            formStep={formStep}
-            nextStep={forwardStep}
-            prevStep={prevStep}
-          />
-        )}
-        {formStep === 3 && (
-          <PersonInformation
-            formStep={formStep}
-            nextStep={forwardStep}
-            prevStep={prevStep}
-          />
-        )}
+        <div className={style.form}>
+          <Header className={style.header} />
+          {formStep === 1 && (
+            <MailRequest formStep={formStep} nextStep={forwardStep} />
+          )}
+          {formStep === 2 && (
+            <PersonInformation formStep={formStep} prevStep={prevStep} />
+          )}
+          <div className={style.loginField}>
+            <span className={style.linkTitle}>Are you already registered?</span>
+            <Link className={style.link} url={LOGIN_ROUTE}>
+              Log in
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   )

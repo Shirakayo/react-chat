@@ -1,13 +1,14 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import clsx from 'clsx'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import * as yup from 'yup'
 import { Button } from '@/shared/ui/button'
+import { FormNavigation } from '@/shared/ui/form-navigation'
 import { useAppDispatch } from '@/store'
 import { authSelector, setEmail } from '@/store/authSlice'
 import style from './style.module.scss'
-import clsx from 'clsx'
 
 interface Props {
   formStep: number
@@ -54,12 +55,13 @@ export const MailRequest = ({ formStep, nextStep }: Props) => {
         autoComplete="off"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className={style.stepInformation}>
-          <span>{formStep} of 3</span>
-          <p className={style.stepInformationTitle}>
-            Enter your e-mail address
-          </p>
-        </div>
+        <FormNavigation
+          nextStep={nextStep}
+          isValid={isValid}
+          title="Enter your e-mail address"
+          removePrevStep
+          formStep={formStep}
+        />
         <input
           {...register('email')}
           className={style.inputField}

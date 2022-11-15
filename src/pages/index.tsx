@@ -29,6 +29,7 @@ const publicRoutes: {
 }[] = [
   { path: LOGIN_ROUTE, element: AuthPage },
   { path: REGISTRATION_ROUTE, element: RegistrationPage },
+  { path: HOME_ROUTE, element: HomePage },
 ]
 
 const privateRoutes = [
@@ -56,18 +57,20 @@ export const Routing = () => {
             }
           />
         ))}
-      {publicRoutes.map((route) => (
-        <Route
-          key={route.path}
-          path={route.path}
-          element={
-            <Suspense fallback={<Loader />}>
-              <route.element />
-            </Suspense>
-          }
-        />
-      ))}
-      <Route path="/*" element={<Navigate to={LOGIN_ROUTE} replace />} />
+      {!isAuthenticated &&
+        // eslint-disable-next-line sonarjs/no-identical-functions
+        publicRoutes.map((route) => (
+          <Route
+            key={route.path}
+            path={route.path}
+            element={
+              <Suspense fallback={<Loader />}>
+                <route.element />
+              </Suspense>
+            }
+          />
+        ))}
+      <Route path="/*" element={<Navigate to={HOME_ROUTE} replace />} />
     </Routes>
   )
 }

@@ -4,7 +4,7 @@ import koi from '/public/koi.png'
 import style from './style.module.scss'
 
 interface Props {
-  className: string
+  className?: string
 }
 
 export const Header = ({ className }: Props) => {
