@@ -11,22 +11,29 @@ interface Props {
   removeNextStep?: boolean
   title: string
   isValid?: boolean
+  handleData?: () => void
 }
 
 export const FormNavigation = ({
   prevStep,
   nextStep,
   formStep,
+  handleData,
   removePrevStep = false,
   removeNextStep = false,
   title,
   isValid,
 }: Props) => {
+  const handleBack = () => {
+    handleData?.()
+    prevStep?.()
+  }
+
   return (
     <div className={style.stepInformation}>
       <div className={style.stepHandle}>
         {!removePrevStep && (
-          <Button className={style.stepButton} onClick={prevStep}>
+          <Button className={style.stepButton} onClick={handleBack}>
             <IoIosArrowRoundBack fill="white" size={20} />
           </Button>
         )}

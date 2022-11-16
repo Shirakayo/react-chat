@@ -63,8 +63,8 @@ const authSlice = createSlice({
     },
     setPersonInfo(state, { payload }) {
       state.authData.login = payload.login
-      state.authData.password = payload.password
-      state.authData.confirmPassword = payload.confirmPassword
+      state.authData.firstname = payload.firstname
+      state.authData.lastname = payload.lastname
     },
   },
 })
