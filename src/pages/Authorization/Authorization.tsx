@@ -9,12 +9,17 @@ import { Link } from '@/shared/ui/link'
 import { REGISTRATION_ROUTE } from '@/utils/paths'
 import { AnotherAuth } from '@/widgets/authorization/ui/another-auth'
 import style from './style.module.scss'
+import { fetchLoginUser } from '@/store/authSlice'
+import { useAppDispatch } from '@/store'
 
 const schema = yup.object({
-  username: yup
+  email: yup
     .string()
-    .min(1, 'Minimum 1 characters')
-    .max(15, 'Maximum 15 characters'),
+    .matches(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+      'Enter a correct e-mail address'
+    )
+    .required("Don't you have any mail?"),
   password: yup
     .string()
     .required('Please Enter your password')
@@ -25,24 +30,30 @@ const schema = yup.object({
 })
 
 interface FormValue {
-  username: string
+  email: string
   password: string
 }
 
 export const Authorization = () => {
   useChangeTitle('Authorization')
+  const dispatch = useAppDispatch()
   const [viewMagicLink, setViewMagicLink] = useState(false)
   const {
     handleSubmit,
     register,
     formState: { errors, isValid },
   } = useForm<FormValue>({
-    mode: 'onBlur',
+    mode: 'onSubmit',
     resolver: yupResolver(schema),
   })
 
   const onSubmit = (data: FormValue) => {
-    console.log(data)
+    dispatch(
+      fetchLoginUser({
+        email: data.email,
+        password: data.password,
+      })
+    )
   }
 
   return (
@@ -52,12 +63,12 @@ export const Authorization = () => {
         {!viewMagicLink && (
           <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
             <input
-              {...register('username')}
+              {...register('email')}
               className={clsx(
                 style.authInput,
-                errors.username?.message && style.error
+                errors.email?.message && style.error
               )}
-              title={errors.username?.message}
+              title={errors.email?.message}
               placeholder="Username"
               type="text"
             />

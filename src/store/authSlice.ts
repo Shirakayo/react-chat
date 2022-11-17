@@ -91,6 +91,20 @@ export const requestRegistrationUser = createAsyncThunk<unknown, RegisterData>(
   }
 )
 
+export const fetchLoginUser = createAsyncThunk<
+  unknown,
+  Pick<RegisterData, 'email' | 'password'>
+>('auth/fetchLogin', async ({ email, password }) => {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  })
+  if (error) {
+    return error
+  }
+  return data
+})
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -109,9 +123,14 @@ const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(requestRegistrationUser.fulfilled, (state, action) => {
+    builder.addCase(requestRegistrationUser.fulfilled, (state) => {
       state.status = Status.success
-      console.log(action)
+    })
+    builder.addCase(fetchLoginUser.fulfilled, (state, action) => {
+      state.status = Status.success
+      state.isAuthenticated = true
+      debugger
+      state.user.push(action.payload?.user)
     })
   },
 })
