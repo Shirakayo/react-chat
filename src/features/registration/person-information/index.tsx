@@ -3,50 +3,16 @@ import clsx from 'clsx'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
-import * as yup from 'yup'
+import { schema } from '@/features/registration/person-information/schema'
+import {
+  FormField,
+  Props,
+} from '@/features/registration/person-information/types'
 import { Button } from '@/shared/ui/button'
 import { FormNavigation } from '@/shared/ui/form-navigation'
 import { useAppDispatch } from '@/store'
 import { authSelector, setPersonInfo } from '@/store/authSlice'
 import style from './style.module.scss'
-
-interface Props {
-  formStep: number
-  prevStep: () => void
-}
-
-interface FormField {
-  login: string
-  firstname: string
-  lastname: string
-  password: string
-  confirmPassword: string
-}
-
-const schema = yup.object({
-  login: yup
-    .string()
-    .min(1, 'Minimum 1 characters')
-    .max(15, 'Maximum 15 characters'),
-  firstname: yup
-    .string()
-    .matches(/^[A-Za-z ]*$/, 'Please enter valid name')
-    .max(40)
-    .required(),
-  lastname: yup
-    .string()
-    .matches(/^[A-Za-z ]*$/, 'Please enter valid name')
-    .max(40)
-    .required(),
-  password: yup
-    .string()
-    .required('No password provided.')
-    .min(8, 'Password is too short - should be 8 chars minimum.')
-    .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref('password'), null], 'Passwords must match'),
-})
 
 export const PersonInformation = ({ formStep, prevStep }: Props) => {
   const dispatch = useAppDispatch()
@@ -88,18 +54,27 @@ export const PersonInformation = ({ formStep, prevStep }: Props) => {
         <input
           {...register('login')}
           type="text"
+          title={errors.login?.message}
           placeholder="Login"
-          className={clsx(style.loginInput, style.input)}
+          className={clsx(style.input, errors.login?.message && style.error)}
         />
         <div className={style.fullNameFields}>
           <input
-            className={style.input}
+            className={clsx(
+              style.input,
+              errors.firstname?.message && style.error
+            )}
+            title={errors.firstname?.message}
             placeholder="Firstname"
             {...register('firstname')}
             type="text"
           />
           <input
-            className={style.input}
+            className={clsx(
+              style.input,
+              errors.lastname?.message && style.error
+            )}
+            title={errors.lastname?.message}
             placeholder="Lastname"
             {...register('lastname')}
             type="text"
@@ -108,14 +83,19 @@ export const PersonInformation = ({ formStep, prevStep }: Props) => {
         <input
           {...register('password')}
           type="password"
+          title={errors.password?.message}
           placeholder="Password*"
-          className={clsx(style.loginInput, style.input)}
+          className={clsx(style.input, errors.password?.message && style.error)}
         />
         <input
           {...register('confirmPassword')}
           type="password"
+          title={errors.confirmPassword?.message}
           placeholder="Confirm Password*"
-          className={clsx(style.loginInput, style.input)}
+          className={clsx(
+            style.input,
+            errors.confirmPassword?.message && style.error
+          )}
         />
         <Button
           disabled={!isValid}

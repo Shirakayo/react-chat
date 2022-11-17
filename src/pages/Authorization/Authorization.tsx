@@ -1,12 +1,14 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import clsx from 'clsx'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { useChangeTitle } from '@/hooks/useChangeTitle'
 import { Header } from '@/shared/ui/auth-header'
-import style from './style.module.scss'
-import clsx from 'clsx'
 import { AnotherAuth } from '@/widgets/authorization/ui/another-auth'
+import style from './style.module.scss'
+import { Link } from '@/shared/ui/link'
+import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '@/utils/paths'
 
 const schema = yup.object({
   username: yup
@@ -51,13 +53,21 @@ export const Authorization = () => {
           <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
             <input
               {...register('username')}
-              className={style.authInput}
+              className={clsx(
+                style.authInput,
+                errors.username?.message && style.error
+              )}
+              title={errors.username?.message}
               placeholder="Username"
               type="text"
             />
             <input
               {...register('password')}
-              className={style.authInput}
+              className={clsx(
+                style.authInput,
+                errors.password?.message && style.error
+              )}
+              title={errors.password?.message}
               placeholder="Password"
               type="password"
             />
@@ -73,7 +83,13 @@ export const Authorization = () => {
           </form>
         )}
         <p className={style.passwordReset}>Forgot your password?</p>
-        <AnotherAuth />
+        <AnotherAuth className={style.anotherAuthBlock} />
+        <div className={style.registerField}>
+          <span className={style.linkTitle}>Are you new here?</span>
+          <Link className={style.link} url={REGISTRATION_ROUTE}>
+            Sign up.
+          </Link>
+        </div>
       </div>
     </div>
   )

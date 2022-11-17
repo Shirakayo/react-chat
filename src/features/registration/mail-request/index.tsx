@@ -40,7 +40,7 @@ export const MailRequest = ({ formStep, nextStep }: Props) => {
     defaultValues: {
       email: authData.email,
     },
-    mode: 'onChange',
+    mode: 'onBlur',
     resolver: yupResolver(schema),
   })
 
@@ -64,11 +64,14 @@ export const MailRequest = ({ formStep, nextStep }: Props) => {
         />
         <input
           {...register('email')}
-          className={style.inputField}
+          className={clsx(
+            style.inputField,
+            errors.email?.message && style.error
+          )}
+          title={errors.email?.message}
           placeholder="Email*"
           type="email"
         />
-        <small className={style.errorMessage}>{errors.email?.message}</small>
         <Button
           disabled={!isValid}
           className={clsx(
