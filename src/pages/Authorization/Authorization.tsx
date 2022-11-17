@@ -24,7 +24,7 @@ const schema = yup.object({
     .string()
     .required('Please Enter your password')
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
       'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character'
     ),
 })
@@ -43,7 +43,7 @@ export const Authorization = () => {
     register,
     formState: { errors, isValid },
   } = useForm<FormValue>({
-    mode: 'onSubmit',
+    mode: 'onChange',
     resolver: yupResolver(schema),
   })
 
@@ -55,6 +55,8 @@ export const Authorization = () => {
       })
     )
   }
+
+  console.log(errors.password?.message)
 
   return (
     <div className={style.mainWrapper}>
