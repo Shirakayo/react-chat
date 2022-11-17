@@ -69,7 +69,7 @@ export const Authorization = () => {
                 errors.email?.message && style.error
               )}
               title={errors.email?.message}
-              placeholder="Username"
+              placeholder="Email"
               type="text"
             />
             <input
