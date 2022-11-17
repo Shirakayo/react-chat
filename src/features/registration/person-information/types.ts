@@ -4,7 +4,7 @@ export interface Props {
 }
 
 export interface FormField {
-  login: string
+  username: string
   firstname: string
   lastname: string
   password: string

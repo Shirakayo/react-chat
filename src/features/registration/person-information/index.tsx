@@ -11,7 +11,11 @@ import {
 import { Button } from '@/shared/ui/button'
 import { FormNavigation } from '@/shared/ui/form-navigation'
 import { useAppDispatch } from '@/store'
-import { authSelector, setPersonInfo } from '@/store/authSlice'
+import {
+  authSelector,
+  requestRegistrationUser,
+  setPersonInfo,
+} from '@/store/authSlice'
 import style from './style.module.scss'
 
 export const PersonInformation = ({ formStep, prevStep }: Props) => {
@@ -26,7 +30,7 @@ export const PersonInformation = ({ formStep, prevStep }: Props) => {
     mode: 'onChange',
     resolver: yupResolver(schema),
     defaultValues: {
-      login: authData.login,
+      username: authData.username,
       firstname: authData.firstname,
       lastname: authData.lastname,
     },
@@ -38,7 +42,15 @@ export const PersonInformation = ({ formStep, prevStep }: Props) => {
   }
 
   const onSubmit = (data: FormField) => {
-    console.log(data)
+    dispatch(
+      requestRegistrationUser({
+        email: authData.email,
+        username: data.username,
+        password: data.password,
+        firstname: data.firstname,
+        lastname: data.lastname,
+      })
+    )
   }
 
   return (
@@ -52,11 +64,11 @@ export const PersonInformation = ({ formStep, prevStep }: Props) => {
           formStep={formStep}
         />
         <input
-          {...register('login')}
+          {...register('username')}
           type="text"
-          title={errors.login?.message}
+          title={errors.username?.message}
           placeholder="Login"
-          className={clsx(style.input, errors.login?.message && style.error)}
+          className={clsx(style.input, errors.username?.message && style.error)}
         />
         <div className={style.fullNameFields}>
           <input

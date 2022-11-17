@@ -5,10 +5,10 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { useChangeTitle } from '@/hooks/useChangeTitle'
 import { Header } from '@/shared/ui/auth-header'
+import { Link } from '@/shared/ui/link'
+import { REGISTRATION_ROUTE } from '@/utils/paths'
 import { AnotherAuth } from '@/widgets/authorization/ui/another-auth'
 import style from './style.module.scss'
-import { Link } from '@/shared/ui/link'
-import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '@/utils/paths'
 
 const schema = yup.object({
   username: yup
