@@ -7,14 +7,15 @@ import style from './style.module.scss'
 
 interface Props {
   className: string
+  handleGithubLogin: () => void
 }
 
-export const AnotherAuth = ({ className }: Props) => {
+export const AnotherAuth = ({ className, handleGithubLogin }: Props) => {
   return (
     <div className={clsx(style.anotherAuth, className)}>
       <p className={style.title}>With other services</p>
       <div className={style.serviceField}>
-        <Button>
+        <Button onClick={handleGithubLogin}>
           <GoMarkGithub size={26} title="Authorize via github" />
         </Button>
         <Button>

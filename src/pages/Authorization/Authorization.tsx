@@ -9,7 +9,7 @@ import { Link } from '@/shared/ui/link'
 import { REGISTRATION_ROUTE } from '@/utils/paths'
 import { AnotherAuth } from '@/widgets/authorization/ui/another-auth'
 import style from './style.module.scss'
-import { fetchLoginUser } from '@/store/authSlice'
+import { fetchGithubLogin, fetchLoginUser } from '@/store/authSlice'
 import { useAppDispatch } from '@/store'
 
 const schema = yup.object({
@@ -56,7 +56,9 @@ export const Authorization = () => {
     )
   }
 
-  console.log(errors.password?.message)
+  const handleGithubLogin = () => {
+    dispatch(fetchGithubLogin())
+  }
 
   return (
     <div className={style.mainWrapper}>
@@ -96,7 +98,10 @@ export const Authorization = () => {
           </form>
         )}
         <p className={style.passwordReset}>Forgot your password?</p>
-        <AnotherAuth className={style.anotherAuthBlock} />
+        <AnotherAuth
+          handleGithubLogin={handleGithubLogin}
+          className={style.anotherAuthBlock}
+        />
         <div className={style.registerField}>
           <span className={style.linkTitle}>Are you new here?</span>
           <Link className={style.link} url={REGISTRATION_ROUTE}>

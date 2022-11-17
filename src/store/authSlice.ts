@@ -105,6 +105,26 @@ export const fetchLoginUser = createAsyncThunk<
   return data
 })
 
+export const fetchGithubLogin = createAsyncThunk(
+  'auth/fetchGithub',
+  async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'github',
+    })
+    if (error) {
+      return error
+    }
+    return data
+  }
+)
+
+export const fetchSignOut = createAsyncThunk('auth/signOut', async () => {
+  const { error } = await supabase.auth.signOut()
+  if (error) {
+    return error
+  }
+})
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -129,8 +149,18 @@ const authSlice = createSlice({
     builder.addCase(fetchLoginUser.fulfilled, (state, action) => {
       state.status = Status.success
       state.isAuthenticated = true
-      debugger
       state.user.push(action.payload?.user)
+    })
+    builder.addCase(fetchGithubLogin.fulfilled, (state, action) => {
+      state.status = Status.success
+      state.isAuthenticated = true
+      state.user.push(action.payload?.user)
+    })
+    builder.addCase(fetchSignOut.fulfilled, (state) => {
+      state.isAuthenticated = false
+    })
+    builder.addCase(fetchSignOut.rejected, (state) => {
+      state.status = Status.error
     })
   },
 })
