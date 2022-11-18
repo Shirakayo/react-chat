@@ -5,6 +5,7 @@ import { Loader } from '@/shared/ui/loader'
 import { authSelector } from '@/store/authSlice'
 import {
   CONTACT_ROUTE,
+  DIALOG_ROUTE,
   HOME_ROUTE,
   LOGIN_ROUTE,
   MARKS_ROUTE,
@@ -22,6 +23,7 @@ const Voices = lazy(() => import('./Voices'))
 const Contact = lazy(() => import('./Contacts'))
 const Marks = lazy(() => import('./Marks'))
 const Conferences = lazy(() => import('./Conferences'))
+const Dialog = lazy(() => import('@/features/dialog'))
 
 const publicRoutes: {
   path: string
@@ -39,6 +41,7 @@ const privateRoutes = [
   { path: MARKS_ROUTE, element: Marks },
   { path: MEETS_ROUTE, element: Conferences },
   { path: HOME_ROUTE, element: HomePage },
+  { path: DIALOG_ROUTE, element: Dialog },
 ]
 
 export const Routing = () => {
@@ -58,7 +61,6 @@ export const Routing = () => {
           />
         ))}
       {!isAuthenticated &&
-        // eslint-disable-next-line sonarjs/no-identical-functions
         publicRoutes.map((route) => (
           <Route
             key={route.path}

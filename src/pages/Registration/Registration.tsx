@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { MailRequest } from '@/features/registration/mail-request'
 import { PersonInformation } from '@/features/registration/person-information'
 import { useChangeTitle } from '@/hooks/useChangeTitle'
 import { Header } from '@/shared/ui/auth-header'
 import { Link } from '@/shared/ui/link'
+import { authSelector } from '@/store/authSlice'
 import { LOGIN_ROUTE } from '@/utils/paths'
 import style from './style.module.scss'
-import { authSelector } from '@/store/authSlice'
-import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 
 export const Registration = () => {
   const [formStep, setFormStep] = useState(1)

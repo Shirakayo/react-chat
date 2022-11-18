@@ -6,11 +6,11 @@ import * as yup from 'yup'
 import { useChangeTitle } from '@/hooks/useChangeTitle'
 import { Header } from '@/shared/ui/auth-header'
 import { Link } from '@/shared/ui/link'
+import { useAppDispatch } from '@/store'
+import { fetchGithubLogin, fetchLoginUser } from '@/store/authSlice'
 import { REGISTRATION_ROUTE } from '@/utils/paths'
 import { AnotherAuth } from '@/widgets/authorization/ui/another-auth'
 import style from './style.module.scss'
-import { fetchGithubLogin, fetchLoginUser } from '@/store/authSlice'
-import { useAppDispatch } from '@/store'
 
 const schema = yup.object({
   email: yup

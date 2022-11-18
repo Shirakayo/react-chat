@@ -1,13 +1,13 @@
 import React from 'react'
 import { VscSignOut } from 'react-icons/vsc'
+import { useNavigate } from 'react-router-dom'
 import { Button } from '@/shared/ui/button'
 import { useAppDispatch } from '@/store'
 import { fetchSignOut } from '@/store/authSlice'
+import { LOGIN_ROUTE } from '@/utils/paths'
 import { Logo } from './logo'
 import { Navigation } from './navigation'
 import style from './styles.module.scss'
-import { useNavigate } from 'react-router-dom'
-import { LOGIN_ROUTE } from '@/utils/paths'
 
 export const SideBar = () => {
   const dispatch = useAppDispatch()

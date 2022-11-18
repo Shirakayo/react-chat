@@ -2,6 +2,7 @@ import React from 'react'
 import { BiDotsVerticalRounded } from 'react-icons/bi'
 import { Icon } from '@/shared/ui/icon'
 import { Profile } from '@/shared/ui/profile'
+import img from '/public/mock-profile.jpg'
 import style from './style.module.scss'
 
 export const Header = () => {
@@ -11,7 +12,7 @@ export const Header = () => {
   return (
     <div className={style.wrapper}>
       <div className={style.account}>
-        <Profile url="mock-profile.jpg" />
+        <Profile url={img} />
         <div className={style.accountInfo}>
           <h2 className={style.accountInfoTitle}>{user.fullName}</h2>
           <span className={style.accountInfoDescription}>My account</span>

@@ -58,7 +58,7 @@ interface State {
 }
 
 const initialState: State = {
-  isAuthenticated: false,
+  isAuthenticated: true,
   status: Status.relax,
   user: [],
   authData: {
@@ -154,7 +154,12 @@ const authSlice = createSlice({
     builder.addCase(fetchGithubLogin.fulfilled, (state, action) => {
       state.status = Status.success
       state.isAuthenticated = true
-      state.user.push(action.payload?.user)
+      state.user.push(action.payload.user)
+    })
+    builder.addCase(fetchGithubLogin.rejected, (state, action) => {
+      state.status = Status.success
+      state.isAuthenticated = true
+      state.user.push(action.payload?.error)
     })
     builder.addCase(fetchSignOut.fulfilled, (state) => {
       state.isAuthenticated = false
