@@ -1,5 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { RootState } from '@/store/store'
+import { supabase } from '@/supabase'
 
 interface Users {
   id: number
@@ -12,6 +13,13 @@ interface Users {
   last_visit: Date
   date_joined: Date
   is_online: boolean
+}
+
+enum Status {
+  success = 'success',
+  loading = 'loading',
+  error = 'error',
+  relax = 'relax',
 }
 
 interface User {
@@ -34,22 +42,88 @@ interface AuthData {
   [key: string]: string
 }
 
+interface RegisterData {
+  username: string
+  password: string
+  email: string
+  firstname: string
+  lastname: string
+}
+
 interface State {
   isAuthenticated: boolean
   user: User[]
+  status: Status
   authData: AuthData
 }
 
 const initialState: State = {
-  isAuthenticated: false,
+  isAuthenticated: true,
+  status: Status.relax,
   user: [],
   authData: {
     email: '',
-    login: '',
+    username: '',
     firstname: '',
     lastname: '',
+    password: '',
   },
 }
+
+export const requestRegistrationUser = createAsyncThunk<unknown, RegisterData>(
+  'auth/requestRegistration',
+  async ({ email, password, firstname, lastname, username }) => {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          firstname,
+          lastname,
+          username,
+        },
+      },
+    })
+    if (error) {
+      return error
+    }
+    return data
+  }
+)
+
+export const fetchLoginUser = createAsyncThunk<
+  unknown,
+  Pick<RegisterData, 'email' | 'password'>
+>('auth/fetchLogin', async ({ email, password }) => {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  })
+  if (error) {
+    return error
+  }
+  return data
+})
+
+export const fetchGithubLogin = createAsyncThunk(
+  'auth/fetchGithub',
+  async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'github',
+    })
+    if (error) {
+      return error
+    }
+    return data
+  }
+)
+
+export const fetchSignOut = createAsyncThunk('auth/signOut', async () => {
+  const { error } = await supabase.auth.signOut()
+  if (error) {
+    return error
+  }
+})
 
 const authSlice = createSlice({
   name: 'auth',
@@ -63,9 +137,36 @@ const authSlice = createSlice({
     },
     setPersonInfo(state, { payload }) {
       state.authData.login = payload.login
+      state.authData.firstname = payload.firstname
+      state.authData.lastname = payload.lastname
       state.authData.password = payload.password
-      state.authData.confirmPassword = payload.confirmPassword
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(requestRegistrationUser.fulfilled, (state) => {
+      state.status = Status.success
+    })
+    builder.addCase(fetchLoginUser.fulfilled, (state, action) => {
+      state.status = Status.success
+      state.isAuthenticated = true
+      state.user.push(action.payload?.user)
+    })
+    builder.addCase(fetchGithubLogin.fulfilled, (state, action) => {
+      state.status = Status.success
+      state.isAuthenticated = true
+      state.user.push(action.payload.user)
+    })
+    builder.addCase(fetchGithubLogin.rejected, (state, action) => {
+      state.status = Status.success
+      state.isAuthenticated = true
+      state.user.push(action.payload?.error)
+    })
+    builder.addCase(fetchSignOut.fulfilled, (state) => {
+      state.isAuthenticated = false
+    })
+    builder.addCase(fetchSignOut.rejected, (state) => {
+      state.status = Status.error
+    })
   },
 })
 

@@ -1,14 +1,44 @@
 .mainWrapper {
   min-height: 100vh;
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
-  background-color: #151719;
+
+  &::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./assets/bg.jpg');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+    z-index: -5;
+  }
+
+  &::after {
+    content:'';
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100%;
+    background: rgba(0, 0, 0, .7);
+    z-index: -5;
+  }
 }
 
 .formWrapper {
   width: 400px;
-  height: 600px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .header {
@@ -16,4 +46,81 @@
   margin-bottom: 30px;
   display: flex;
   justify-content: center;
+}
+
+.form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.authInput {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, .6);
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  outline: none;
+
+  &::placeholder {
+    font-size: 13px;
+    color: white;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+
+.button {
+  background-color: transparent;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+
+  &Valid {
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, .6);
+    color: rgba(255, 255, 255, .6)
+  }
+
+  &Invalid {
+    cursor: not-allowed;
+    border: 1px solid rgba(255, 255, 255, .2);
+    color: rgba(255, 255, 255, .2)
+  }
+}
+
+.passwordReset {
+  color: #F65433 !important;
+  width: 100%;
+  font-size: 13px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.anotherAuthBlock {
+  border-bottom: 1px solid rgba(255, 255, 255, .6)
+}
+
+.registerField {
+  padding-top: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.linkTitle {
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.link {
+  font-weight: 500;
+  font-size: 16px;
+  color: #F65433 !important;
+}
+
+.error {
+  border: 1px solid darkred;
 }

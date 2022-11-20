@@ -1,7 +1,9 @@
+import img1 from '/public/mock-user1.jpg'
+
 export const messages = [
   {
     id: 1,
-    profile_url: 'mock-user1.jpg',
+    profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
     last_message:
@@ -10,7 +12,7 @@ export const messages = [
   },
   {
     id: 2,
-    profile_url: 'mock-user1.jpg',
+    profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
     last_message:
@@ -19,7 +21,7 @@ export const messages = [
   },
   {
     id: 3,
-    profile_url: 'mock-user1.jpg',
+    profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
     last_message:
@@ -28,7 +30,7 @@ export const messages = [
   },
   {
     id: 4,
-    profile_url: 'mock-user1.jpg',
+    profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
     last_message:
@@ -37,7 +39,7 @@ export const messages = [
   },
   {
     id: 5,
-    profile_url: 'mock-user1.jpg',
+    profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
     last_message:
@@ -46,7 +48,7 @@ export const messages = [
   },
   {
     id: 6,
-    profile_url: 'mock-user1.jpg',
+    profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
     last_message:
@@ -55,7 +57,7 @@ export const messages = [
   },
   {
     id: 7,
-    profile_url: 'mock-user1.jpg',
+    profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
     last_message:
@@ -64,7 +66,7 @@ export const messages = [
   },
   {
     id: 8,
-    profile_url: 'mock-user1.jpg',
+    profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
     last_message:
@@ -73,7 +75,7 @@ export const messages = [
   },
   {
     id: 9,
-    profile_url: 'mock-user1.jpg',
+    profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
     last_message:
@@ -82,7 +84,7 @@ export const messages = [
   },
   {
     id: 10,
-    profile_url: 'mock-user1.jpg',
+    profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
     last_message:
@@ -91,7 +93,7 @@ export const messages = [
   },
   {
     id: 11,
-    profile_url: 'mock-user1.jpg',
+    profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
     last_message:
@@ -100,7 +102,7 @@ export const messages = [
   },
   {
     id: 12,
-    profile_url: 'mock-user1.jpg',
+    profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
     last_message:

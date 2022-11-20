@@ -14,7 +14,9 @@ export const Header = ({ className }: Props) => {
         <img className={style.logo} src={koi} alt="logo" />
         <p className={style.title}>OniChat</p>
       </div>
-      <small className={style.subTitle}>made by Shirakayo</small>
+      <p className={style.subTitle}>
+        made by Shirakayo <span className={style.smallSubTitle}>team</span>
+      </p>
     </div>
   )
 }

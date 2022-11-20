@@ -1,0 +1,27 @@
+.headerWrapper {
+  height: 60px;
+  width: 100%;
+  background-color: var(--dark-color);
+  border-bottom: 2px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  &Username {
+    color: var(--light-color);
+    font-weight: 600;
+  }
+
+  &Status {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, .5);
+  }
+}

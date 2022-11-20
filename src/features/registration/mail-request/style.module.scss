@@ -12,7 +12,7 @@
   background-color: transparent;
   height: 40px;
   padding: 0 10px;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 
   &::placeholder {
     font-size: 13px;
@@ -60,4 +60,8 @@
 
 .stepInformationButton {
   cursor: pointer;
+}
+
+.error {
+  border: 1px solid darkred;
 }
