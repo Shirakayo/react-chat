@@ -15,7 +15,7 @@ import {
   authSelector,
   requestRegistrationUser,
   setPersonInfo,
-} from '@/store/authSlice'
+} from '@/store/slices/authSlice'
 import style from './style.module.scss'
 
 export const PersonInformation = ({ formStep, prevStep }: Props) => {

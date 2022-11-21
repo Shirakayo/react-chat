@@ -1,0 +1,22 @@
+.interface {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  gap: 15px;
+
+  &Action {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    span {
+      font-size: 13px;
+    }
+  }
+}
+
+.deleteAction {
+  span {
+    color: red;
+  }
+}

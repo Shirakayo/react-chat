@@ -1,12 +1,17 @@
 import React from 'react'
 import style from './style.module.scss'
 
+interface Messages {
+  id: string
+  message: string
+}
+
 interface Props {
-  messages?: string[]
+  messages: Messages[]
 }
 
 export const Messages = ({ messages }: Props) => {
-  if (messages && messages.length === 0) {
+  if (messages.length === 0) {
     return (
       <div className={style.empty}>
         <p className={style.emptyTitle}>Your dialog is empty...</p>

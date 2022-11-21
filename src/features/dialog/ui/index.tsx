@@ -1,45 +1,64 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { MainLayout } from '@/layouts'
-import { DialogLayout } from '@/layouts/ui/dialog-layout'
-import { DialogMock } from '@/utils/mock/dialog'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { dialogSelector } from '@/store/slices/dialogSlice'
+import { DialogSideBar } from '@/widgets/dialog-sidebar'
 import { Header } from './header'
 import { MessageInput } from './message-input'
 import { Messages } from './Messages'
 import style from './style.module.scss'
 
-interface StateTypes {
+interface Messages {
   id: string
-  status: string
-  username: string
-  messages: string[]
+  message: string
 }
 
-export const Dialog = () => {
-  const [userData, setUserData] = useState<StateTypes | null>(null)
-  const { id } = useParams()
-  useEffect(() => {
-    const findObject = DialogMock.find((el) => {
-      return el.id === id
-    })
-    if (findObject) {
-      setUserData(findObject)
-    }
-  }, [id])
+interface Dialog {
+  id: string
+  userAvatar: string
+  files: string[]
+  photos: string[]
+  name: string
+  mobile: string
+  bioStatus: string
+  username: string
+  status: string
+  messages: Messages[]
+}
 
-  if (!userData) {
+interface Props {
+  dialogData: Dialog[]
+}
+
+export const Dialog = ({ dialogData }: Props) => {
+  const { viewBar } = useSelector(dialogSelector)
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  if (!dialogData) {
     return <div>Загрузка..</div>
   }
 
   return (
-    <MainLayout>
-      <DialogLayout>
-        <div className={style.wrapper}>
-          <Header username={userData.username} status={userData.status} />
-          <Messages messages={userData.messages} />
-          <MessageInput />
-        </div>
-      </DialogLayout>
-    </MainLayout>
+    <div className={style.wrapper}>
+      {dialogData.map((dialog) => (
+        <React.Fragment key={dialog.id}>
+          <div className={style.dialogWrapper}>
+            <Header username={dialog.name} status={dialog.status} />
+            <Messages messages={dialog.messages} />
+            <MessageInput />
+          </div>
+          {viewBar && (
+            <DialogSideBar
+              mobile={dialog.mobile}
+              name={dialog.name}
+              avatar={dialog.userAvatar}
+              file={dialog.files}
+              bioStatus={dialog.bioStatus}
+              status={dialog.status}
+              photos={dialog.photos}
+              username={dialog.username}
+            />
+          )}
+        </React.Fragment>
+      ))}
+    </div>
   )
 }

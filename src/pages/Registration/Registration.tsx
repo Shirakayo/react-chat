@@ -6,7 +6,7 @@ import { PersonInformation } from '@/features/registration/person-information'
 import { useChangeTitle } from '@/hooks/useChangeTitle'
 import { Header } from '@/shared/ui/auth-header'
 import { Link } from '@/shared/ui/link'
-import { authSelector } from '@/store/authSlice'
+import { authSelector } from '@/store/slices/authSlice'
 import { LOGIN_ROUTE } from '@/utils/paths'
 import style from './style.module.scss'
 

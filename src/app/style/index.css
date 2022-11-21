@@ -363,6 +363,7 @@ template {
   --light-color: #ffffff;
   --primary-light-color: rgba(255, 255, 255, 0.7);
   --dark-color: #18191a;
+  --orange-color: #F65433;
   --black-bg: #0a0e0f;
   --input-bg: #202426;
   --border-color: rgba(255, 255, 255, 0.1);

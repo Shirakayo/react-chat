@@ -1,10 +1,6 @@
 import React from 'react'
 import { IconType } from 'react-icons'
-import {
-  AiOutlineMessage,
-  AiOutlineSetting,
-  AiOutlineVideoCamera,
-} from 'react-icons/ai'
+import { AiOutlineMessage, AiOutlineVideoCamera } from 'react-icons/ai'
 import { BsPeople, BsTelephone } from 'react-icons/bs'
 import { CiBookmarkMinus } from 'react-icons/ci'
 import { useLocation } from 'react-router-dom'
@@ -22,7 +18,6 @@ const navigationList: ListItems[] = [
   { path: '/voices', icon: BsTelephone },
   { path: '/conferences', icon: AiOutlineVideoCamera },
   { path: '/bookmarks', icon: CiBookmarkMinus },
-  { path: '/settings', icon: AiOutlineSetting },
 ]
 
 export const Navigation = () => {
@@ -36,7 +31,7 @@ export const Navigation = () => {
             <Link className={style.navigationListLink} url={el.path}>
               <el.icon
                 size={25}
-                fill={pathname === el.path ? 'white' : 'gray'}
+                fill={pathname.includes(el.path) ? '#F65433' : 'white'}
               />
             </Link>
           </li>

@@ -1,11 +1,13 @@
 import clsx from 'clsx'
 import React from 'react'
-import { Link } from '@/shared/ui/link'
 import { Profile } from '@/shared/ui/profile'
 import style from './style.module.scss'
+import { Button } from '@/shared/ui/button'
+import { useAppDispatch } from '@/store'
+import { getDialogData } from '@/store/slices/dialogSlice'
 
 interface Message {
-  id: number
+  id: string
   profile_url: string
   className?: string
   onClick?: () => void
@@ -18,12 +20,20 @@ interface Message {
 interface Props {
   message: Message
   className?: string
-  id: number
+  id: string
 }
 
 export const Message = ({ message, className, id }: Props) => {
+  const dispatch = useAppDispatch()
+  const getDialogHandle = () => {
+    dispatch(getDialogData(id))
+  }
+
   return (
-    <Link className={clsx(style.wrapper, className)} url={`/messages/${id}`}>
+    <Button
+      onClick={getDialogHandle}
+      className={clsx(style.wrapper, className)}
+    >
       <div className={style.message}>
         <Profile url={message.profile_url} status={message.status} />
         <div className={style.info}>
@@ -34,6 +44,6 @@ export const Message = ({ message, className, id }: Props) => {
           <small>{message.last_message_timestamp}</small>
         </div>
       </div>
-    </Link>
+    </Button>
   )
 }

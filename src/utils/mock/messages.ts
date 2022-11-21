@@ -2,7 +2,7 @@ import img1 from '/public/mock-user1.jpg'
 
 export const messages = [
   {
-    id: 1,
+    id: '1',
     profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
@@ -11,7 +11,7 @@ export const messages = [
     status: 'online',
   },
   {
-    id: 2,
+    id: '2',
     profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
@@ -20,7 +20,7 @@ export const messages = [
     status: 'online',
   },
   {
-    id: 3,
+    id: '3',
     profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
@@ -29,7 +29,7 @@ export const messages = [
     status: 'online',
   },
   {
-    id: 4,
+    id: '4',
     profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
@@ -38,7 +38,7 @@ export const messages = [
     status: 'online',
   },
   {
-    id: 5,
+    id: '5',
     profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
@@ -47,7 +47,7 @@ export const messages = [
     status: 'online',
   },
   {
-    id: 6,
+    id: '6',
     profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
@@ -56,7 +56,7 @@ export const messages = [
     status: 'online',
   },
   {
-    id: 7,
+    id: '7',
     profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
@@ -65,7 +65,7 @@ export const messages = [
     status: 'online',
   },
   {
-    id: 8,
+    id: '8',
     profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
@@ -74,7 +74,7 @@ export const messages = [
     status: 'online',
   },
   {
-    id: 9,
+    id: '9',
     profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
@@ -83,7 +83,7 @@ export const messages = [
     status: 'online',
   },
   {
-    id: 10,
+    id: '10',
     profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
@@ -92,7 +92,7 @@ export const messages = [
     status: 'online',
   },
   {
-    id: 11,
+    id: '11',
     profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',
@@ -101,7 +101,7 @@ export const messages = [
     status: 'online',
   },
   {
-    id: 12,
+    id: '12',
     profile_url: img1,
     login: 'Test',
     last_message_timestamp: '12.00PM',

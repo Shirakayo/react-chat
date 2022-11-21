@@ -1,20 +1,40 @@
+import img from '/public/mock-user1.jpg'
+
 export const DialogMock = [
   {
     id: '1',
-    username: 'Egor Talanov',
+    userAvatar: img,
+    files: [],
+    photos: [],
+    bioStatus: 'Status1',
+    name: 'Егор Таланов',
+    username: '@pandetklif',
+    mobile: '+7 929 132 1722',
     status: 'last seen just now',
     messages: [],
   },
   {
     id: '2',
-    username: 'Shirakayo',
+    userAvatar: img,
+    files: [],
+    photos: [],
+    bioStatus: 'Status2',
+    name: 'Shirakayo',
+    mobile: '+7 929 132 1722',
+    username: '@pugachewand',
     status: 'online',
-    messages: []
+    messages: [],
   },
   {
     id: '3',
-    username: 'Aurum',
+    userAvatar: img,
+    files: [],
+    photos: [],
+    bioStatus: 'Status3',
+    mobile: '+7 929 132 1722',
+    name: 'Aurum',
+    username: '@yakub_ibragimov',
     status: 'last seen 2 hours ago',
-    messages: []
-  }
+    messages: [],
+  },
 ]

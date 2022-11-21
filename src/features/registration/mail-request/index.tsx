@@ -7,7 +7,7 @@ import * as yup from 'yup'
 import { Button } from '@/shared/ui/button'
 import { FormNavigation } from '@/shared/ui/form-navigation'
 import { useAppDispatch } from '@/store'
-import { authSelector, setEmail } from '@/store/authSlice'
+import { authSelector, setEmail } from '@/store/slices/authSlice'
 import style from './style.module.scss'
 
 interface Props {

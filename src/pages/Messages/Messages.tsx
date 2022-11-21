@@ -1,20 +1,15 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import Dialog from '@/features/dialog'
 import { useChangeTitle } from '@/hooks/useChangeTitle'
 import { MainLayout } from '@/layouts'
+import { dialogSelector } from '@/store/slices/dialogSlice'
 import style from './style.module.scss'
 
-interface Dialog {
-  id: number
-  title: string
-}
-
-interface Props {
-  dialog?: Dialog[] // Сделать модель на бэке и переделать
-}
-
-export const Messages = ({ dialog }: Props) => {
+export const Messages = () => {
   useChangeTitle('Messages')
-  if (!dialog || dialog.length === 0) {
+  const { dialog } = useSelector(dialogSelector)
+  if (dialog.length === 0) {
     return (
       <MainLayout>
         <div className={style.empty_wrapper}>
@@ -28,7 +23,7 @@ export const Messages = ({ dialog }: Props) => {
 
   return (
     <MainLayout>
-      <div>messages</div>
+      <Dialog dialogData={dialog} />
     </MainLayout>
   )
 }
