@@ -1,22 +1,23 @@
 .wrapper {
-  overflow-y: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
   height: calc(100vh - 395px);
   padding-bottom: 30px;
-  scroll-behavior: smooth;
-  scrollbar-color: white transparent;
-  scrollbar-width: thin;
+  //scroll-behavior: smooth;
+  //scrollbar-color: white transparent;
+  scrollbar-width: none;
 
-  &::-webkit-scrollbar {
-    width: 5px;
-    border-radius: 5px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 5px;
-  }
+  //&::-webkit-scrollbar {
+  //  width: 5px;
+  //  border-radius: 5px;
+  //}
+  //
+  //&::-webkit-scrollbar-track {
+  //  background: transparent;
+  //}
+  //
+  //&::-webkit-scrollbar-thumb {
+  //  background-color: rgba(255, 255, 255, 0.7);
+  //  border-radius: 5px;
+  //}
 }

@@ -2,9 +2,14 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: white;
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   margin-bottom: 15px;
+
+  &Title {
+    font-size: 12px;
+    font-weight: 300;
+  }
 }

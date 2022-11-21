@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
-import { authReducer } from '@/store/authSlice'
+import { authReducer } from '@/store/slices/authSlice'
+import { dialogReducer } from '@/store/slices/dialogSlice'
 
 const rootReducer = combineReducers({
   authReducer,
+  dialogReducer,
 })
 
 export const store = configureStore({

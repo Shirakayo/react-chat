@@ -1,0 +1,20 @@
+.wrapper {
+  border-bottom: 10px solid rgba(255,255,255, .1);
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 20px;
+}
+
+.username {
+  font-weight: 600;
+}
+
+.status {
+  font-weight: 300;
+  font-size: 13px;
+  color: rgba(255, 255, 255, .7);
+}

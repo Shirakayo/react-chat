@@ -2,7 +2,7 @@ import React, { lazy, LazyExoticComponent, Suspense } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Loader } from '@/shared/ui/loader'
-import { authSelector } from '@/store/authSlice'
+import { authSelector } from '@/store/slices/authSlice'
 import {
   CONTACT_ROUTE,
   DIALOG_ROUTE,

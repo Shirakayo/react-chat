@@ -1,0 +1,60 @@
+.contentWrapper {
+  border-bottom: 10px solid rgba(255,255,255, .1);
+  padding-bottom: 15px;
+}
+
+.information {
+  display: flex;
+  gap: 30px;
+  padding: 20px 20px 5px 20px;
+}
+
+
+.infoBlock {
+
+  &Phone {
+    font-size: 13px;
+    margin-bottom: 5px;
+
+    &Subtitle {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, .7)
+    }
+  }
+
+  &Username {
+    font-size: 13px;
+    margin-bottom: 5px;
+
+    &Subtitle {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, .7)
+    }
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &:last-child {
+    margin-bottom: 30px;
+  }
+}
+
+.notify {
+
+  &Content {
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+  }
+
+  &Title {
+    flex: 2;
+    margin-left: 30px;
+    font-size: 13px;
+  }
+}

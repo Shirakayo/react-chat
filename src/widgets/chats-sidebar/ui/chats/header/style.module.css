@@ -10,7 +10,7 @@
   font-weight: 500;
 }
 .titleCount {
-  background-color: lightcoral;
+  background-color: var(--orange-color);
   border-radius: 10px;
   padding: 0 10px;
   height: 100%;
